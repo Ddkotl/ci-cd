@@ -1,3 +1,19 @@
 sudo apt install nginx
 sudo systemctl enable nginx
-sudo systemctl is-enabled nginx
+
+sudo vim /etc/nginx/sites-available/qi-war.minigms.ru.conf
+sudo ln -s /etc/nginx/sites-available/qi-war.minigms.ru.conf /etc/nginx/sites-enabled/
+sudo nginx -s reload
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+server {
+  server_name qi-war.minigms.ru;
+
+  location / {
+    include proxy_params;
+    
+    proxy_pass http://127.0.0.1:3001;
+  }
+
+  listen 80;
+}
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
