@@ -3,6 +3,8 @@ ssh -L 9999:localhost:3000 root@serverIP
 
 #Копирование папки по ssh
 scp -r .test admin@test.ru:home/qq/path
+rsync -az --delete .test  admin@test.ru:home/qq/path
+
 
 ssh-keygen -t ed25519 -C "comment" -f ./deploy_key -N ""
 
